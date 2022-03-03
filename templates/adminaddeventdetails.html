@@ -1,0 +1,51 @@
+{% include 'adminheader.html' %}
+<center>
+<form method="post">
+	<div class="fd">
+<br><br><br><br>
+	<h1>Add Events</h1>
+	<table class="table" style="width: 500px;">
+		<tr>
+			<th>Select AshaWorker</th>
+			<td>
+				<select name="asha"  class="form-control" >
+					{% for row in data['asha'] %}
+					<option value="{{row['worker_id']}}">{{row['firstname']+ " " +row['lastname']}}</option>
+					{% endfor %}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th>Event</th>
+			<td><input type="text" name="event" class="form-control"></td>
+		</tr>
+		<tr>
+			<th>Date</th>
+			<td><input type="date" name="date"  class="form-control"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" name="add" value="ADD" class="btn btn-success"></td>
+		</tr>
+	</table>
+</form>
+</div>
+<div class="fd">
+<h1>View Events</h1>
+<table>
+	<tr>
+		<th>Ashaworker Name</th>
+		<th>Event</th>
+		<th>Date</th>
+	</tr>
+	{% for row in data['event'] %}
+	<tr>
+		<td>{{row['firstname']+ " " +row['lastname']}}</td>
+		<td>{{row['event']}}</td>
+		<td>{{row['date']}}</td>
+	</tr>
+	{% endfor %}
+</table>
+</div>
+</center>
+
+{% include 'footer.html' %}

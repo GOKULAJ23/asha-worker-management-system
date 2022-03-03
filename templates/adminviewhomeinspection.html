@@ -1,0 +1,28 @@
+{% include 'adminheader.html' %}
+<center>
+<form method="post">
+	<div class="tra">
+<br><br><br><br><br><br>
+<h1>View Inspection</h1>
+<table>
+	<tr>
+		<th>Details</th>
+		<th>File</th>
+		<th>Status</th>
+	</tr>
+	{% for row in data['inspection'] %}
+	<tr>
+		<td>{{row['details']}}</td>
+		<td><a href="/{{row['files']}}" download><img src="/{{row['files']}}" width="100" height="100"></a></td>
+		<td>{{row['status']}}</td>
+		{% if row['status']=="pending" %}
+		<td><a href="?action=accept&wid={{row['inspection_id']}}&id={{row['worker_id']}}" class="btn btn-primary">Accept</a>
+		<a href="?action=reject&wid={{row['inspection_id']}}&id={{row['worker_id']}}" class="btn btn-danger">Reject</a></td>
+		{% endif %}
+	</tr>
+	{% endfor %}
+</table>
+</div>
+</form>
+</center>
+{% include 'footer.html' %}

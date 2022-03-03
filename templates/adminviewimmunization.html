@@ -1,0 +1,26 @@
+{% include 'adminheader.html' %}
+<center>
+<form method="post">
+	<div class="tra">
+<br><br><br><br><br><br>
+<h1>View Immunization</h1>
+<table>
+	<tr>
+		<th>Date</th>
+		<th>Status</th>
+	</tr>
+	{% for row in data['immunization'] %}
+	<tr>
+		<td>{{row['date']}}</td>
+		<td>{{row['status']}}</td>
+		{% if row['status']=="pending" %}
+		<td><a href="?action=accept&wid={{row['immunization_id']}}&id={{row['worker_id']}}" class="btn btn-primary">Accept</a>
+		<a href="?action=reject&wid={{row['immunization_id']}}&id={{row['worker_id']}}" class="btn btn-danger">Reject</a></td>
+		{% endif %}
+	</tr>
+	{% endfor %}
+</table>
+</div>
+</form>
+</center>
+{% include 'footer.html' %}

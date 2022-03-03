@@ -1,0 +1,39 @@
+{% include 'publicheader.html' %}
+<style type="text/css">
+    div.lo{
+background-image: url("/static/assets/img/lo.jpg");
+    height: 100%;
+    width: 100%;
+    display: table;
+    position: relative;
+    margin-right: 50px;
+    }
+</style>
+
+            <div class="lo">
+            	<center>
+            	<form method="post">
+            		<br><br><br><br><br><br><br>
+                <h1>LOGIN</h1>
+                <table class="table" style="width: 500px">
+					<tr>
+						<th style="font-size: 30px;color: #01020d">Username</th>
+						<td><input type="text" name="username" class="form-control"></td>
+					</tr>
+					<tr>
+						<th>Password</th>
+						<td><input type="password" name="password" class="form-control"></td>
+					</tr>
+					<tr>
+						<td align="center" colspan="2"><input type="submit" name="login" value="LOGIN" class="btn btn-danger"></td>
+					</tr>
+				</table>
+				</form>
+                
+            
+    </div><!-- /.hero -->
+
+
+{% include 'footer.html' %}
+
+

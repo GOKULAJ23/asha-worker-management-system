@@ -1,0 +1,24 @@
+{% include 'adminheader.html' %}
+<center>
+		<div class="ex1">
+<br><br><br><br><br><br>
+<h1>View Users</h1>
+<table class="table" style="width: 500px">
+	<tr>
+		<th>Name</th>
+		<th>Place</th>
+		<th>Phone</th>
+		<th>Email</th>
+	</tr>
+	{% for row in data['user'] %}
+	<tr>
+		<td>{{row['firstname']+ " "+row['lastname']}}</td>
+		<td>{{row['place']}}</td>
+		<td>{{row['phone']}}</td>
+		<td>{{row['email']}}</td>
+	</tr>
+	{% endfor %}
+</table>
+</div>
+</center>
+{% include 'footer.html' %}

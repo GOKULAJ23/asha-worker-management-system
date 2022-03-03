@@ -1,0 +1,106 @@
+{% include 'adminheader.html' %}
+<center>
+	<div class="ex">
+
+
+<form method="post" style="margin-right: 475px">
+<br><br><br><br>
+{% if data['worker'] %}
+<h1>Update Asha Worker</h1>
+<table>
+		<tr>
+			<th>First Name</th>
+			<td><input type="text" name="firstname" value="{{data['worker'][0]['firstname']}}"></td>
+		</tr>
+		<tr>
+			<th>Last Name</th>
+			<td><input type="text" name="lastname" value="{{data['worker'][0]['lastname']}}"></td>
+		</tr>
+		<tr>
+			<th>Place</th>
+			<td><input type="text" name="place" value="{{data['worker'][0]['place']}}"></td>
+		</tr>
+		<tr>
+			<th>Phone</th>
+			<td><input type="text" name="phone" value="{{data['worker'][0]['phone']}}"></td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td><input type="email" name="email" value="{{data['worker'][0]['email']}}"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" name="update" value="UPDATE" class="btn btn-primary"></td>
+		</tr>
+	</table>
+
+	{% else %}
+<br><br><br><br>
+
+
+	<h1>Manage Asha Worker</h1>
+	<table>
+		<tr>
+			<th>First Name</th>
+			<td><input type="text" name="firstname" required pattern="[A-Za-z ]+$"></td>
+		</tr>
+		<tr>
+			<th>Last Name</th>
+			<td><input type="text" name="lastname" required></td>
+		</tr>
+		<tr>
+			<th>Place</th>
+			<td><input type="text" name="place" required></td>
+		</tr>
+		<tr>
+			<th>Phone</th>
+			<td><input type="text" name="phone" pattern="[6-9]{1}[0-9]{9}" required></td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td><input type="email" name="email" required></td>
+		</tr>
+		<tr>
+			<th>Username</th>
+			<td><input type="text" name="username" minlength="5" placeholder="Atleast 5 charecter" required></td>
+		</tr>
+		<tr>
+			<th>Password</th>
+			<td><input type="password" name="password" minlength="8" placeholder="Atleast 8 charecter" required></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" name="manage" value="MANAGE" class="btn btn-primary"></td>
+		</tr>
+	</table>
+	{% endif %}
+</form>
+</div>
+
+<br><br><br><br>
+
+<h1>View Asha Workers</h1>
+<table class="table" style="width:200px;">
+	<tr>
+		<th>Worker name</th>
+		<th>Place</th>
+		<th>Phone</th>
+		<th>Email</th>
+	</tr>
+	{% for row in data['ashaworker'] %}
+	<tr>
+		<td>{{row['firstname']}} {{row['lastname']}}</td>
+		<td>{{row['place']}}</td>
+		<td>{{row['phone']}}</td>
+		<td>{{row['email']}}</td>
+		<td><a href="?action=delete&id={{row['login_id']}}" class="btn btn-danger">DELETE</a>
+		<a href="?action=update&id={{row['login_id']}}" class="btn btn-success">UPDATE</a></td>
+		<td><a href="adminviewattendancemarked?id={{row['worker_id']}}" class="btn btn-info">Attendance</a></td>
+		<td><a href="adminviewhomeinspection?id={{row['worker_id']}}" class="btn btn-info">Inspection</a></td>
+		<td><a href="adminviewhealthreport?id={{row['worker_id']}}" class="btn btn-info">Health</a></td>
+		<td><a href="adminviewimmunization?id={{row['worker_id']}}" class="btn btn-info">Immunization</a></td>
+
+	</tr>
+	{% endfor %}
+</table>
+</center>
+
+{% include 'footer.html' %}
